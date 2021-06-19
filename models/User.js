@@ -5,18 +5,18 @@ module.exports = (connection, sequelize) => {
             primaryKey:true,
             autoIncrement: true
         },
-        firstName: {
+        firstname: {
             type: sequelize.DataTypes.STRING,
             allowNull: false
         },
-        lastName: {
+        lastname: {
             type: sequelize.DataTypes.STRING,
         },
         address: {
             type: sequelize.DataTypes.TEXT,
             allowNull: false
         },
-        postCode: {
+        postcode: {
             type: sequelize.DataTypes.STRING,
             allowNull: false
         },

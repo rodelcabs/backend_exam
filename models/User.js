@@ -14,15 +14,12 @@ module.exports = (connection, sequelize) => {
         },
         address: {
             type: sequelize.DataTypes.TEXT,
-            allowNull: false
         },
         postcode: {
             type: sequelize.DataTypes.STRING,
-            allowNull: false
         },
         contact: {
             type: sequelize.DataTypes.STRING,
-            allowNull: false
         },
         email: {
             type: sequelize.DataTypes.STRING,

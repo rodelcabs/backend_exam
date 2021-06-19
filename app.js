@@ -43,12 +43,16 @@ app.use('/api/users', ensureAuthenticated, require('./routes/user'));
 
 
 // model synchronization
-db.connection.sync({ force: true }).then(async() => {
-    // seeding upon creation and synchronization
-    await db.user.bulkCreate(demousers.data);
-    console.log("All models were synchronized successfully.");
-}).catch(err => console.log(err));
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+    db.connection.sync({ force: true }).then(async() => {
+        // seeding upon creation and synchronization
+        await db.user.bulkCreate(demousers.data);
+        console.log("All models were synchronized successfully.");
+    }).catch(err => console.log(err));   
+}
 
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`)
 });
+
+module.exports = app;

@@ -128,7 +128,7 @@ exports.edit = async(req,res) => {
 
         if(updateuser == 1){
             res.send({
-                message: 'User updated successfully'
+                message: 'User updated successfully.'
             });
         }
         else{
@@ -161,7 +161,7 @@ exports.delete = async(req,res) => {
 
         if(deleteuser == 1){
             res.send({
-                message: 'User deleted successfully'
+                message: 'User deleted successfully.'
             });
         }
         else{

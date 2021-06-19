@@ -4,8 +4,8 @@
 - Authentication and restrictions
 
 ### Pre-requisites (On my machine)
-- NodeJS
-- MySQL (xampp & phpmyadmin)
+- NodeJS (My version: 14.17.0)
+- MySQL (My version: MySQL v15.1 Distrib 10.4.19-MariaDB || XAMPP v3.3.0)
 
 ### Instructions
 Make sure you have installed NodeJS and you have mysql in your machine, then clone this repository and <br>

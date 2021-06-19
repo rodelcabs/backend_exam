@@ -4,10 +4,8 @@ module.exports = {
     /**
      * PASSWORD HASHING METHOD (BCRYPT.JS)
      *
-     * Password hashing gamit bcrypt.js.
-     * kapag walang pinasa na args, idedefault nya sa password12345.
-     *
-     * arguments: password
+     * so this is my work around with bcrypt, bcrypt alone did not behave as I expected, 
+     * it takes time to hash although it doesn't return promise so this is what I did.
      *
      */
      hashPass: function(password=''){

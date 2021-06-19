@@ -1,5 +1,6 @@
 const db = require('../models');
 const hash = require('../libs/hash'); // some useful stuff I made :)
+const { user } = require('../models');
 const User = db.user;
 const Op = db.sequelize.Op;
 
@@ -11,21 +12,37 @@ exports.create = async(req,res,next) => {
         // validate request
         if (!firstname || !email || !username || !password) {
             res.status(400).send({
-                message: "please complete the fields"
+                message: "Please complete the fields"
             });
             return;
         }
 
-        // checking email first
+        // checking email first and user name
         const check = await User.findOne({
             where:{
-                email:email
+                [Op.or]:[
+                    {
+                        email:email
+                    },
+                    {
+                        username:username
+                    }
+                ]
             }
-        })
+        });
         
         if (check){
+            let duplicate = '';
+
+            if (check.email == email) {
+                duplicate = 'Email'
+            }
+            else if (check.username == username) {
+                duplicate = 'Username'
+            }
+
             res.status(400).send({
-                message:"email already exists"
+                message:`${duplicate} already exists`
             });
             return;
         }
@@ -52,21 +69,75 @@ exports.create = async(req,res,next) => {
     } catch (error) {
         console.log(error);
         res.status(500).send({
-            message: error.message || 'Something weng wrong.'
+            message: error.message || 'Could not create the user. Something weng wrong.'
         });
     }
 };
 
 
 // Edit a user
-exports.edit = (req,res) => {
+exports.edit = async(req,res) => {
+    try {
+        const id = req.params.id;
 
+        // get user
+        const updateuser = await User.update(req.body, {
+            where:{
+                id:id
+            }
+        });
+
+        if(updateuser == 1){
+            res.send({
+                message: 'User updated successfully'
+            });
+        }
+        else{
+            res.status(400).send({
+                message:`Cannot update user with id: ${id}, maybe the user was not found or the data you sent was wrong.`
+            });
+            return;
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            message: error.message || `Could not update user with id: ${id}. Something weng wrong.`
+        });
+    }
 };
 
 
 // Delete a user
-exports.delete = (req,res) => {
+exports.delete = async(req,res) => {
+    try {
+        const id = req.params.id;
 
+        // get user
+        const deleteuser = await User.destroy({
+            where:{
+                id:id
+            }
+        });
+
+        if(deleteuser == 1){
+            res.send({
+                message: 'User deleted successfully'
+            });
+        }
+        else{
+            res.status(400).send({
+                message:`Cannot delete user with id: ${id}, maybe the user was not found.`
+            });
+            return;
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            message: error.message || `Could not delete user with id: ${id}. Something weng wrong.`
+        });
+    }
 };
 
 
@@ -78,12 +149,38 @@ exports.getAll = async(req,res) => {
     } catch (error) {
         console.log(error);
         res.status(500).send({
-            message: error.message || 'Something weng wrong.'
+            message: error.message || 'Could not fetch all users. Something weng wrong.'
         });
     }
 };
 
 // Allow multiple users to be removed 
-exports.deleteMany = (req,res) => {
+exports.deleteMany = async(req,res) => {
+    try {
+        const user_id = req.body.user_id;
+        if (!user_id) {
+            res.status(400).send({
+                message: 'No user_id array found.'
+            })
+            return;
+        }
 
+        const delmanyuser = User.destroy({where:{id:user_id}});
+        
+        if (delmanyuser != 0) {
+            res.send({
+                message:'Users deleted successfully.'
+            });
+        }
+        else{
+            res.status(400).send({
+                message: 'Could not delete, maybe some of the user was not found.'
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            message: error.message || 'Could not delete multiple users. Something weng wrong.'
+        });
+    }
 };

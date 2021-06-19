@@ -16,15 +16,13 @@ router.get('/', user.getAll);
 // Add a new user
 router.post('/', user.create);
 
-
 // Edit a user
 router.put('/:id', user.edit);
-
 
 // Delete a user
 router.delete('/:id', user.delete);
 
 // Allow multiple users to be removed 
-router.delete('/deleteMany', user.deleteMany);
+router.delete('/', user.deleteMany);
 
 module.exports = router;

@@ -7,10 +7,10 @@ const bcrypt = require('bcrypt');
 
 exports.authenticate = async(req,res) => {
     try {
-        const {email, password} = req.body;
+        const {username, password} = req.body;
 
         // validate request
-        if (!email || !password) {
+        if (!username || !password) {
             res.status(400).send({
                 message: "Username and password are required!"
             });
@@ -19,7 +19,7 @@ exports.authenticate = async(req,res) => {
 
         const usercheck = await User.findOne({
             where:{
-                email:email
+                username:username
             }
         });
 

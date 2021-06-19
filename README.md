@@ -12,7 +12,7 @@ Make sure you have installed NodeJS and you have mysql in your machine, then clo
 run `$ npm install` for installation.
 
 #### Database:
-For the database, create a database named `backend_exam`. I uploaded the .env file so you can use it for database config just change the `HOST`, `USER`, and `PASSWORD`. The `SECRET_KEY` I generate for session is already there, also uploading .env file in github is not recommended but I uploaded it for your convinience. 
+For the database, create a database named `backend_exam`. I uploaded the .env file so you can use it for database config just change the `HOST`, `USER`, and `PASSWORD`. The `SECRET_KEY` I generate for session is already there, also uploading .env file in github is not recommended but I uploaded it for your reference. 
 
 #### Startup:
 - `$ npm run dev` - to run in your machinge (development environment)

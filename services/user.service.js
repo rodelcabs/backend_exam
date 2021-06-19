@@ -80,6 +80,45 @@ exports.edit = async(req,res) => {
     try {
         const id = req.params.id;
 
+        // checking first email or username
+        if (req.body.email || req.body.username) {
+            const {email, username} = req.body;
+            const checkuser = await User.findOne({
+                where:{
+                    [Op.or]:[
+                        {
+                            email:email? email:null,
+                            id:{
+                                [Op.notIn]:[id]
+                            }
+                        },
+                        {
+                            username:username?username:null,
+                            id:{
+                                [Op.notIn]:[id]
+                            }
+                        }
+                    ]
+                }
+            });
+            
+            if (checkuser) {
+                let duplicate = '';
+
+                if (checkuser.email == email) {
+                    duplicate = 'Email'
+                }
+                else if (checkuser.username == username) {
+                    duplicate = 'Username'
+                }
+    
+                res.status(400).send({
+                    message:`${duplicate} already exists`
+                });
+                return;   
+            }
+        }
+
         // get user
         const updateuser = await User.update(req.body, {
             where:{

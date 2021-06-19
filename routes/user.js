@@ -13,6 +13,9 @@ const user = require('../services/user.service');
 // View list of all users in the system
 router.get('/', user.getAll);
 
+// fetch single user
+router.get('/:id', user.getAll);
+
 // Add a new user
 router.post('/', user.create);
 

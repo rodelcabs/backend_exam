@@ -183,7 +183,18 @@ exports.delete = async(req,res) => {
 // View list of all users in the system
 exports.getAll = async(req,res) => {
     try {
-        const data = await User.findAll();
+        let data = {}
+        if (req.params.id) {
+            data = await User.findOne({
+                where:{
+                    id:req.params.id
+                }
+            });
+        }
+        else{
+            data = await User.findAll();
+        }
+        
         res.send(data)
     } catch (error) {
         console.log(error);

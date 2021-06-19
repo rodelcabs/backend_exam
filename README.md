@@ -8,7 +8,7 @@
 - MySQL (xampp & phpmyadmin)
 
 ### Startup (Instructions)
-Make sure you have installed NodeJS and you have mysql in your machine, then clone this repository and
+Make sure you have installed NodeJS and you have mysql in your machine, then clone this repository and <br>
 run `$ npm install` for installation.
 - `$ npm run dev` - to run in your machinge (development environment)
 - `$ nrpm run test` - to test api if working

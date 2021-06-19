@@ -5,6 +5,7 @@ const db = require('./models');
 const cors = require('cors');
 const session = require('express-session');
 const ensureAuthenticated = require('./libs/ensureAuth');
+const demousers = require('./seed/demo-user.json');
 require('dotenv').config();
 
 // MIDDLEWARE
@@ -42,7 +43,9 @@ app.use('/api/users', ensureAuthenticated, require('./routes/user'));
 
 
 // model synchronization
-db.connection.sync({ force: false }).then(() => {
+db.connection.sync({ force: true }).then(async() => {
+    // seeding upon creation and synchronization
+    await db.user.bulkCreate(demousers.data);
     console.log("All models were synchronized successfully.");
 }).catch(err => console.log(err));
 

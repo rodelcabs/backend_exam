@@ -1,0 +1,54 @@
+{
+    "data":[
+        {
+            "firstname":"John",
+            "lastname": "Doe",
+            "address": "New York",
+            "postcode": "abc123",
+            "contact": "12345",
+            "email": "jdoe@gmail.com",
+            "username": "jdoe",
+            "password": "$2b$10$MqFA1WYxSXwUE04jAtD.L.VfxpeCQ9gc2vgFVYowbRJh.0IiRy7DO"
+        },
+        {
+            "firstname":"dummy1",
+            "lastname": "user",
+            "address": "Texas",
+            "postcode": "abc123",
+            "contact": "12345",
+            "email": "dummy1@gmail.com",
+            "username": "dummy1",
+            "password": "$2b$10$MqFA1WYxSXwUE04jAtD.L.VfxpeCQ9gc2vgFVYowbRJh.0IiRy7DO"
+        },
+        {
+            "firstname":"dummy2",
+            "lastname": "user",
+            "address": "Texas",
+            "postcode": "abc123",
+            "contact": "12345",
+            "email": "dummy2@gmail.com",
+            "username": "dummy2",
+            "password": "$2b$10$MqFA1WYxSXwUE04jAtD.L.VfxpeCQ9gc2vgFVYowbRJh.0IiRy7DO"
+        },
+        {
+            "firstname":"dummy3",
+            "lastname": "user",
+            "address": "Texas",
+            "postcode": "abc123",
+            "contact": "12345",
+            "email": "dummy3@gmail.com",
+            "username": "dummy3",
+            "password": "$2b$10$MqFA1WYxSXwUE04jAtD.L.VfxpeCQ9gc2vgFVYowbRJh.0IiRy7DO"
+        },
+        {
+            "firstname":"dummy4",
+            "lastname": "user",
+            "address": "Texas",
+            "postcode": "abc123",
+            "contact": "12345",
+            "email": "dummy4@gmail.com",
+            "username": "dummy4",
+            "password": "$2b$10$MqFA1WYxSXwUE04jAtD.L.VfxpeCQ9gc2vgFVYowbRJh.0IiRy7DO"
+        }
+    ]
+}

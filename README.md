@@ -16,7 +16,7 @@ For the database, create a database named `backend_exam`. I uploaded the .env fi
 
 #### Startup:
 - `$ npm run dev` - to run in your machinge (development environment)
-- `$ nrpm run test` - to test api if working
+- `$ npm run test` - to test api if working
 
 #### Scripts, Packages and Libraries I used:
 It's all in the [package.json](https://github.com/rodelcabs/backend_exam/blob/master/package.json) so make sure to run `$ npm install` first to install all required packages
